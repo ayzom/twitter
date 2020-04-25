@@ -11,8 +11,10 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@talaikis/s3-db": "^1.0.4",
     "aws-amplify": "^1.2.2",
     "aws-amplify-vue": "^0.3.2",
+    "faker": "^4.1.0",
     "nuxt": "^2.0.0",
     "twitter-lite": "^0.10.1-0"
   }

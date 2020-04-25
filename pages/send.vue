@@ -1,68 +1,45 @@
 <template>
   <div class="container">
 
+     <div>
+       Schedule Post
+       <div>
+         <form id="myform">
+           <div>
+             <label for="status"></label>
+             <input type="text" name="Status" id="status" placeholder="Enter Status"/>
+           </div>
+           
+           <div>
+              <input type="datetime-local" name="Time" placeholder="Select DateTime"/>
+           </div>
+
+          <div>
+              <button :click="saveItem">Submit</button>
+          </div>
+           
+         </form>
+         
+         <div>
+           List of Scheduled Posts
+           <div>
+             <table>
+               <th>
+                 <td>Sr.No</td> <td>Date</td> <td>Status</td> <td>Post On</td> <td>Action</td>
+               </th>
+               
+             </table>
+           </div>
+         </div>
+         
+         
+         
+       </div>
+     </div>
+
   </div>
 </template>
 
-<script>
-
-// const Twit = require('twit')
-
-import Twitter from 'twitter-lite';
-
-const client = new Twitter({
-  consumer_key:         '10J4YciYNsuDXm5ru981rl3ct',
-  consumer_secret:      '63X9MCoG0uulsAfXUWsxigeTCGo5IKsBu3OzYFNQD4wpkvvkXg',
-  access_token:         '111849491-bTOTXWKjilZ9CEM4zU5lgu66Lo2kYf9jWqrf4UPO',
-  access_token_secret:  '1YiGXwtnAzzcRVrbcRnaJCiVtc1sKuEGPPB33KQQeLGAb'
-})
-
-
-client
-          .get("account/verify_credentials")
-          .then(results => {
-            console.log("results", results);
-          })
-          .catch(console.error);
-
-//
-//  tweet 'hello world!'
-//
-
-
-
-export default {
-  data() {
-    return {
-      signedIn: false
-    }
-  },
-  methods: {
-
-    sendMessage() {
-        
-        
-        this.client
-          .get("account/verify_credentials")
-          .then(results => {
-            console.log("results", results);
-          })
-          .catch(console.error);
-        
-            // this.T.post('statuses/update', { status: 'hello world!' }, function(err, data, response) {
-            //   console.log(data);
-            //   alert(data);
-            // })
-    }
-
-  },
-  created() {
-      
-      this.sendMessage();
-
-  }
-}
-</script>
 
 <style>
 .container {
@@ -80,3 +57,60 @@ export default {
   max-width: 400px;
 }
 </style>
+
+<script>
+  
+// Load the AWS SDK for Node.js
+var AWS = require('aws-sdk');
+// Set the region 
+AWS.config.update({region: 'us-east-1'});
+
+// Create S3 service object
+const s3 = new AWS.S3({apiVersion: '2006-03-01'});
+  
+  
+export default {
+  data() {
+    return {
+      signedIn: false
+    }
+  },
+  methods: {
+
+      saveItem() {
+        
+        let d = document.querySelector("#myform");
+        
+        let myObj = {
+          status: d.elements[0].value,
+          dt: d.elements[1].value
+        }
+        
+         const params = {
+          ACL: "authenticated-read", 
+          Body: myObj, 
+          Bucket: "tweetdisk", 
+          Key: "file.json"
+         };
+        
+        
+         s3.putObject(params, function(err, data) {
+           if(err) console.log(err, err.stack); // an error occurred
+           else     console.log(data);           // successful response
+           /*
+           data = {
+            ETag: "\"6805f2cfc46c0f04559748bb039d69ae\"", 
+            VersionId: "Kirh.unyZwjQ69YxcQLA8z4F5j3kJJKr"
+           }
+           */
+         });
+        
+        
+      }
+
+  },
+  created() {
+
+  }
+}
+</script>
