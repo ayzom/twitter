@@ -15,7 +15,7 @@
            </div>
 
           <div>
-              <button type="button" :click="saveItem">Submit</button>
+              <button type="button" v-on:click="saveItem">Submit</button>
           </div>
            
          </form>
