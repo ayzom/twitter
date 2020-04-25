@@ -17,6 +17,14 @@ const client = new Twitter({
   access_token_secret:  '1YiGXwtnAzzcRVrbcRnaJCiVtc1sKuEGPPB33KQQeLGAb'
 })
 
+
+client
+          .get("account/verify_credentials")
+          .then(results => {
+            console.log("results", results);
+          })
+          .catch(console.error);
+
 //
 //  tweet 'hello world!'
 //
