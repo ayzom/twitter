@@ -3,8 +3,8 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _7f49c8d4 = () => interopDefault(import('../pages/send.vue' /* webpackChunkName: "pages/send" */))
-const _3ad62e36 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _213094c8 = () => interopDefault(import('..\\pages\\send.vue' /* webpackChunkName: "pages_send" */))
+const _63144b24 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -24,11 +24,11 @@ export const routerOptions = {
 
   routes: [{
     path: "/send",
-    component: _7f49c8d4,
+    component: _213094c8,
     name: "send"
   }, {
     path: "/",
-    component: _3ad62e36,
+    component: _63144b24,
     name: "index"
   }],
 

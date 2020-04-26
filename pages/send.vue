@@ -60,13 +60,7 @@
 
 <script>
   
-// Load the AWS SDK for Node.js
-var AWS = require('aws-sdk');
-// Set the region 
-AWS.config.update({region: 'us-east-1'});
 
-// Create S3 service object
-const s3 = new AWS.S3({apiVersion: '2006-03-01'});
   
   
 export default {
@@ -85,10 +79,23 @@ export default {
           status: d.elements[0].value,
           dt: d.elements[1].value
         }
+
+        // Load the AWS SDK for Node.js
+        var AWS = require('aws-sdk');
+
+        AWS.config = new AWS.Config();
+        AWS.config.accessKeyId = "AKIAIGBEWKCCOIWIDQ3A";
+        AWS.config.secretAccessKey = "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";
+        AWS.config.region = "us-east-1";
+
+
+        // Create S3 service object
+        const s3 = new AWS.S3({apiVersion: '2006-03-01'});
+
         
          const params = {
           ACL: "authenticated-read", 
-          Body: myObj, 
+          Body: JSON.stringify(myObj), 
           Bucket: "tweetdisk", 
           Key: "file.json"
          };

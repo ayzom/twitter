@@ -11,7 +11,7 @@ import { setContext, getLocation, getRouteData, normalizeError } from './utils'
 
 /* Plugins */
 
-import nuxt_plugin_awsamplify_8f02af2e from 'nuxt_plugin_awsamplify_8f02af2e' // Source: ../plugins/aws-amplify.js (mode: 'client')
+import nuxt_plugin_awsamplify_8f02af2e from 'nuxt_plugin_awsamplify_8f02af2e' // Source: ..\\plugins\\aws-amplify.js (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
