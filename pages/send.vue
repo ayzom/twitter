@@ -83,19 +83,19 @@ export default {
         // Load the AWS SDK for Node.js
         var AWS = require('aws-sdk');
 
-        AWS.config = new AWS.Config();
-        AWS.config.accessKeyId = "AKIAIGBEWKCCOIWIDQ3A";
-        AWS.config.secretAccessKey = "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";
-        AWS.config.region = "us-east-1";
-
+        // Initialize the Amazon Cognito credentials provider
+        AWS.config.region = 'us-east-1'; // Region
+        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+            IdentityPoolId: 'us-east-1:c20250d7-1139-4978-8d74-637f7f1da513',
+        });
 
         // Create S3 service object
         const s3 = new AWS.S3({apiVersion: '2006-03-01'});
 
         
          const params = {
-          ACL: "authenticated-read", 
-          Body: JSON.stringify(myObj), 
+          ACL: "public-read", 
+          Body: "teststsge", 
           Bucket: "tweetdisk", 
           Key: "file.json"
          };

@@ -14,6 +14,8 @@
 import { Auth } from 'aws-amplify'
 import { AmplifyEventBus } from 'aws-amplify-vue'
 
+import { mapMutations } from 'vuex'
+
 export default {
   data() {
     return {
