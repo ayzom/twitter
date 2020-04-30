@@ -4,7 +4,7 @@ import ClientOnly from 'vue-client-only'
 import NoSsr from 'vue-no-ssr'
 import { createRouter } from './router.js'
 import NuxtChild from './components/nuxt-child.js'
-import NuxtError from './components/nuxt-error.vue'
+import NuxtError from '..\\layouts\\error.vue'
 import Nuxt from './components/nuxt.js'
 import App from './App.js'
 import { setContext, getLocation, getRouteData, normalizeError } from './utils'
@@ -12,6 +12,8 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
+import nuxt_plugin_vuetify_e5914fcc from 'nuxt_plugin_vuetify_e5914fcc' // Source: ..\\plugins\\vuetify (mode: 'all')
+import nuxt_plugin_veevalidate_346f6561 from 'nuxt_plugin_veevalidate_346f6561' // Source: ..\\plugins\\vee-validate (mode: 'all')
 import nuxt_plugin_awsamplify_8f02af2e from 'nuxt_plugin_awsamplify_8f02af2e' // Source: ..\\plugins\\aws-amplify.js (mode: 'client')
 
 // Component: <ClientOnly>
@@ -55,7 +57,7 @@ async function createApp (ssrContext) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"title":"nuxt-amplify-auth-starter","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"Nuxt Amplify Auth Starter is a starter template for adding Amplify Auth to a Nuxt single page web application."}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"}],"style":[],"script":[]},
+    head: {"title":"nuxt-amplify-auth-starter","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"Nuxt Amplify Auth Starter is a starter template for adding Amplify Auth to a Nuxt single page web application."}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto:300,400,500,700|Material+Icons"}],"script":[{"src":"https:\u002F\u002Fcdnjs.cloudflare.com\u002Fajax\u002Flibs\u002Fecharts\u002F4.0.4\u002Fecharts-en.min.js"}],"style":[]},
 
     store,
     router,
@@ -169,6 +171,14 @@ async function createApp (ssrContext) {
   }
 
   // Plugin execution
+
+  if (typeof nuxt_plugin_vuetify_e5914fcc === 'function') {
+    await nuxt_plugin_vuetify_e5914fcc(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_veevalidate_346f6561 === 'function') {
+    await nuxt_plugin_veevalidate_346f6561(app.context, inject)
+  }
 
   if (process.client && typeof nuxt_plugin_awsamplify_8f02af2e === 'function') {
     await nuxt_plugin_awsamplify_8f02af2e(app.context, inject)

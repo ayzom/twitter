@@ -8,16 +8,39 @@ import {
   sanitizeComponent
 } from './utils'
 
+import NuxtError from '..\\layouts\\error.vue'
 import NuxtLoading from './components/nuxt-loading.vue'
 import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
-import _6f6c098b from '..\\layouts\\default.vue'
+import '..\\assets\\style\\theme.styl'
 
-const layouts = { "_default": sanitizeComponent(_6f6c098b) }
+import '..\\assets\\style\\app.styl'
+
+import '..\\node_modules\\font-awesome\\css\\font-awesome.css'
+
+import '..\\node_modules\\roboto-fontface\\css\\roboto\\roboto-fontface.css'
+
+import _2d22344e from '..\\layouts\\chat.vue'
+import _5fa3735e from '..\\layouts\\dashboard.vue'
+import _6f6c098b from '..\\layouts\\default.vue'
+import _2d26a6ad from '..\\layouts\\mail.vue'
+
+const layouts = { "_chat": sanitizeComponent(_2d22344e),"_dashboard": sanitizeComponent(_5fa3735e),"_default": sanitizeComponent(_6f6c098b),"_mail": sanitizeComponent(_2d26a6ad) }
 
 export default {
   render (h, props) {
     const loadingEl = h('NuxtLoading', { ref: 'loading' })
+
+    if (this.nuxt.err && NuxtError) {
+      const errorLayout = (NuxtError.options || NuxtError).layout
+      if (errorLayout) {
+        this.setLayout(
+          typeof errorLayout === 'function'
+            ? errorLayout.call(NuxtError, this.context)
+            : errorLayout
+        )
+      }
+    }
 
     const layoutEl = h(this.layout || 'nuxt')
     const templateEl = h('div', {
