@@ -11,8 +11,15 @@
 </template>
 
 <script>
-import { Auth } from 'aws-amplify'
+
 import { AmplifyEventBus } from 'aws-amplify-vue'
+import Amplify, { Auth } from 'aws-amplify';
+import awsconfig from '../aws-exports';
+
+Amplify.configure(awsconfig);
+
+const currentConfig = Auth.configure();
+console.log(currentConfig);
 
 import { mapMutations } from 'vuex'
 
