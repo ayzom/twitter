@@ -10,9 +10,12 @@ Assuming this Rest API:
 /posts/id	DELETE  deletes a post
 */
 
+export const state = () => ({
+
+})
+
 export default {
   namespaced: true,
-  state: {},
   mutations: {},
   getters: {},
   actions: {

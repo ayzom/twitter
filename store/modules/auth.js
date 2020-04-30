@@ -1,12 +1,10 @@
-
-
+export const state = () => ({
+	authenticated: false,
+	authError: null
+})
 
 export default {
     namespaced: true,
-	state: {
-		authenticated: false,
-		authError: null
-	},
 	mutations: {
 		AuthUser(state) {4
 			state.authenticated = true

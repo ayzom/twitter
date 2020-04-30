@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <img class="logo" src="../assets/logo.png" alt="Nuxt Amplify Auth Starter">
+    <!-- <img class="logo" src="../assets/logo.png" alt="Nuxt Amplify Auth Starter"> -->
+    <h2>TweetJack</h2>
     <div v-if="!signedIn">
       <amplify-authenticator />
     </div>
