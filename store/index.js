@@ -8,13 +8,15 @@ const debug = process.env.NODE_ENV !== "production";
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   modules: {
     postsModule,
     authModule
   },
   strict: debug
 })
+
+export default store;
 
 function saveToken(token, cb) {
 	localStorage.setItem('token', token)
