@@ -1,0 +1,17 @@
+<template>
+  <v-container grid-list-xl fluid>
+    <h4>
+      <i class="fa fa-smile-o"></i>
+      Hi there, this an empty page.</h4>
+  </v-container>
+</template>
+
+<script>
+  export default {
+    layout: "dash",
+  }
+</script>
+
+<style scoped>
+
+</style>

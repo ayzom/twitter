@@ -21,11 +21,12 @@ import '..\\node_modules\\font-awesome\\css\\font-awesome.css'
 import '..\\node_modules\\roboto-fontface\\css\\roboto\\roboto-fontface.css'
 
 import _2d22344e from '..\\layouts\\chat.vue'
+import _2d229088 from '..\\layouts\\dash.vue'
 import _5fa3735e from '..\\layouts\\dashboard.vue'
 import _6f6c098b from '..\\layouts\\default.vue'
 import _2d26a6ad from '..\\layouts\\mail.vue'
 
-const layouts = { "_chat": sanitizeComponent(_2d22344e),"_dashboard": sanitizeComponent(_5fa3735e),"_default": sanitizeComponent(_6f6c098b),"_mail": sanitizeComponent(_2d26a6ad) }
+const layouts = { "_chat": sanitizeComponent(_2d22344e),"_dash": sanitizeComponent(_2d229088),"_dashboard": sanitizeComponent(_5fa3735e),"_default": sanitizeComponent(_6f6c098b),"_mail": sanitizeComponent(_2d26a6ad) }
 
 export default {
   render (h, props) {

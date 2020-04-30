@@ -34,6 +34,7 @@ const _664f8189 = () => interopDefault(import('..\\pages\\general\\snackbar.vue'
 const _ca935c2e = () => interopDefault(import('..\\pages\\general\\tables.vue' /* webpackChunkName: "pages_general_tables" */))
 const _6fa22858 = () => interopDefault(import('..\\pages\\general\\tooltips.vue' /* webpackChunkName: "pages_general_tooltips" */))
 const _0c6d7db3 = () => interopDefault(import('..\\pages\\general\\typography.vue' /* webpackChunkName: "pages_general_typography" */))
+const _efdb511a = () => interopDefault(import('..\\pages\\home.vue' /* webpackChunkName: "pages_home" */))
 const _cfc504f6 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages_login" */))
 const _b71f876a = () => interopDefault(import('..\\pages\\mail.vue' /* webpackChunkName: "pages_mail" */))
 const _4ea679f5 = () => interopDefault(import('..\\pages\\mail\\0\\_uuid.vue' /* webpackChunkName: "pages_mail_0__uuid" */))
@@ -193,6 +194,10 @@ export const routerOptions = {
       component: _0c6d7db3,
       name: "general-typography"
     }]
+  }, {
+    path: "/home",
+    component: _efdb511a,
+    name: "home"
   }, {
     path: "/login",
     component: _cfc504f6,
